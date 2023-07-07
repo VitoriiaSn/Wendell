@@ -7,7 +7,7 @@ public class Jogador : MonoBehaviour
 {
     [SerializeField] public float velocidade;
     private Rigidbody2D rig;
-   // private Animator anim;
+    private Animator anim;
    public int ForçaPulo;
 
    public bool Chao;
@@ -15,7 +15,7 @@ public class Jogador : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-       // anim = GetComponent<Animator>();
+       anim = GetComponent<Animator>();
        
     }
 
@@ -26,17 +26,17 @@ public class Jogador : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             rig.velocity = Vector2.right * velocidade;
-           // anim.SetBool("isRun", true);
+            anim.SetBool("isRun", true);
         } 
         else if (Input.GetKey(KeyCode.A))
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             rig.velocity = Vector2.left * velocidade;
-           // anim.SetBool("isRun", true);
+            anim.SetBool("isRun", true);
         }
         else
         {
-            //anim.SetBool("isRun", false);
+            anim.SetBool("isRun", false);
         }
 
         if (Input.GetKey(KeyCode.Space) && Chao)
