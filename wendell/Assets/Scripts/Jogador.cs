@@ -6,20 +6,35 @@ using UnityEngine;
 public class Jogador : MonoBehaviour
 {
     [SerializeField] public float velocidade;
+    public int ForçaPulo;
+
+    private bool isJumping;
+    private bool doubleJump;
+    
     private Rigidbody2D rig;
     private Animator anim;
-   public int ForçaPulo;
+  
 
    public bool Chao;
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-       anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
        
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        Move();
+    }
+
+    void Move()
+    {
+        float movement = Input.GetAxis("Horizontal");
+        rig.velocity = new Vector2(movement * velocidade, rig.velocity.y);
+    }
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.D))
