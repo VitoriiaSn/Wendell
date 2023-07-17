@@ -40,13 +40,13 @@ public class Jogador : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            rig.velocity = Vector2.right * velocidade;
+            rig.velocity = new Vector2(this.velocidade, rig.velocity.y);
             anim.SetBool("isRun", true);
         } 
         else if (Input.GetKey(KeyCode.A))
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            rig.velocity = Vector2.left * velocidade;
+            rig.velocity = new Vector2(-this.velocidade, rig.velocity.y);
             anim.SetBool("isRun", true);
         }
         else
